@@ -3,7 +3,27 @@
 
     <div id="projects">
 
-        <p>Projects</p>
+        <h3>Projects</h3>
+        <div id="project-button">
+            <% if(locals.user){ %>
+                
+                <!-- <button href="/projects">Create New Project</button> -->
+              
+                <a href="/projects">New Project</a>
+
+            </form>
+            <% } %>
+
+        </div>
+
+        <div id="projects-list-container">
+            <ul>
+                <% for(project of projects){ %> 
+                <%- include('project'); -%> 
+                <% } %>
+              </ul>
+        </div>
+        
 
     </div>
 

@@ -1,0 +1,19 @@
+<form action="projects/<%=project._id%>" method="post">
+
+    <input type="text" name="title" placeholder="Title" required>
+    <textarea name="description" placeholder="Describe Issue"></textarea>
+    <input type="text" name="author" placeholder="Author">
+
+    <label for="labels">Attach labels : </label>
+    <select name="labels" ></select>
+    <option value="bug">bug</option>
+    <option value="enhancement">enhancement</option>
+    <option value="good issue first">good issue first</option>
+    <option value="help wanted">help wanted</option>
+    <option value="invalid">invalid</option>
+    <option value="question">question</option>
+    <option value="wont fix">wont fix</option>
+    
+    <input type="submit" value="Create Issue">
+
+</form>

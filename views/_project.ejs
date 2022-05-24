@@ -1,0 +1,62 @@
+
+<a href="/projects/<%=project._id%>">
+
+    <li>
+
+        <p>
+            Name of Project : <%= project.name %>
+        </p>
+        <p>
+            Description : <%= project.description%>
+        </p>
+        <p>
+            Author : <%= project.author %>
+        </p>
+
+    </li>
+
+</a>
+
+<a href="/projects/issue">Report Issue</a>
+<form action="/projects/<%=project._id%>" method="post">
+    <input type="text" name="title" placeholder="Title" required>
+    <textarea name="description" placeholder="Describe Issue"></textarea>
+    <input type="text" name="author" placeholder="Author">
+
+    <label for="labels">Attach labels : </label>
+    <select name="labels" multiple>
+    <option value="bug">bug</option>
+    <option value="enhancement">enhancement</option>
+    <option value="good issue first">good issue first</option>
+    <option value="help wanted">help wanted</option>
+    <option value="invalid">invalid</option>
+    <option value="question">question</option>
+    <option value="wont fix">wont fix</option>
+    </select>
+    <!-- <input type="submit" value="Create Issue"> -->
+    <input type="hidden" value="<%=project._id%>">
+    <input type="submit" value="Add Issue">
+</form>
+
+<div id="issues-list">
+
+    <ul>
+        
+        <% for(issue of projects.issues){ %> 
+        
+            <li>
+                <p>Title : <%= issue.title %> </p>
+                <p>Description : <%= issue.description %> </p>
+                <p>Author : <%= issue.author %> </p>
+                
+            </li>
+
+        <% } %>
+      </ul>
+
+
+
+</div>
+
+<h3>Issues</h3>
+
