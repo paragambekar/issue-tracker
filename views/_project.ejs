@@ -1,62 +1,117 @@
+<link rel="stylesheet" href="/css/project.css">
+<a href="/projects/<%=projects._id%>">
 
-<a href="/projects/<%=project._id%>">
-
+    <div id="project-container">
+    <div class="project-item">
     <li>
-
+        
         <p>
-            Name of Project : <%= project.name %>
+            <span>Name of Project :</span> <%= projects.name %>
         </p>
         <p>
-            Description : <%= project.description%>
+           <span> Description :</span> <%= projects.description%>
         </p>
         <p>
-            Author : <%= project.author %>
+            <span>Author :</span> <%= projects.author %>
         </p>
-
+        
     </li>
+</div>
 
 </a>
 
 <a href="/projects/issue">Report Issue</a>
-<form action="/projects/<%=project._id%>" method="post">
+
+
+<form action="/projects/<%=projects._id%>" method="post">
     <input type="text" name="title" placeholder="Title" required>
     <textarea name="description" placeholder="Describe Issue"></textarea>
     <input type="text" name="author" placeholder="Author">
-
-    <label for="labels">Attach labels : </label>
-    <select name="labels" multiple>
-    <option value="bug">bug</option>
-    <option value="enhancement">enhancement</option>
-    <option value="good issue first">good issue first</option>
-    <option value="help wanted">help wanted</option>
-    <option value="invalid">invalid</option>
-    <option value="question">question</option>
-    <option value="wont fix">wont fix</option>
+    <select name="labels" class="custom-select" multiple>
+        <option value="bug">bug</option>
+        <option value="enhancement">enhancement</option>
+        <option value="good issue first">good issue first</option>
+        <option value="help wanted">help wanted</option>
+        <option value="invalid">invalid</option>
+        <option value="question">question</option>
+        <option value="wont fix">wont fix</option>
     </select>
-    <!-- <input type="submit" value="Create Issue"> -->
-    <input type="hidden" value="<%=project._id%>">
+    <input type="hidden" value="<%=projects._id%>">
     <input type="submit" value="Add Issue">
 </form>
 
+
+<div>
+
+     <form action="/projects/filter" method="post">
+
+    <fieldset>
+        
+        <legend>Search By Filters</legend>
+
+        <input type="checkbox" name="labels" id="bug" value="bug">
+        <label for="bug">Bug</label>
+        <input type="checkbox" name="labels" id="invalid" value="invalid">
+        <label for="invalid">Invalid</label>
+        <input type="checkbox" name="labels" id="question" value="question">
+        <label for="question">Question</label>
+        <input type="checkbox" name="labels" id="wont" value="wont">
+        <label for="wont">Won't Fix</label>
+        
+    
+        <input type="text" name="author" placeholder="Search By Author">
+       <input type="hidden" value="<%=projects._id%>">
+        <input type="submit" value="Filter">
+    </fieldset>
+
+</form>
+
+</div>
+
+
+
+
 <div id="issues-list">
 
-    <ul>
-        
+    <h2>Issues</h2>
+      
         <% for(issue of projects.issues){ %> 
-        
-            <li>
-                <p>Title : <%= issue.title %> </p>
-                <p>Description : <%= issue.description %> </p>
-                <p>Author : <%= issue.author %> </p>
+           
+     
+                <div class="issue-item">
+                    <p><span>Title :</span> <%= issue.title %> </p>
+                    <p><span>Description :</span> <%= issue.description %> </p>
+                    <p><span>Author :</span><%= issue.author %> </p>
+
+
+                    <% if(issue.labels.length > 0){ %>
+
+                        <div class="labels">
+                        <% for(label of issue.labels){ %>
+                            
+                            <div class="label-item">
+                                <%= label %> 
+                            </div>
+                            
+                            <% } %>
+                        </div>
+                    <% } %>
+
+                </div>
                 
-            </li>
+                
+                
+
+          
 
         <% } %>
-      </ul>
+    
 
 
 
 </div>
+</div>
 
-<h3>Issues</h3>
+<script src="/js/labels.js"></script>
+
 

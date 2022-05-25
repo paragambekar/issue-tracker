@@ -1,0 +1,88 @@
+::placeholder {
+  color: whitesmoke; }
+
+#project-container {
+  background-color: #192233; }
+
+.project-item {
+  background-color: #212c42;
+  list-style: none;
+  padding: 15px;
+  margin: 10px auto;
+  border-radius: 10px; }
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  form .hide {
+    visibility: hidden; }
+  form input[type="text"] {
+    width: 55%;
+    height: 45px;
+    margin: 10px;
+    background-color: #3d3df8; }
+  form textarea {
+    width: 55%;
+    height: 100px;
+    margin: 10px;
+    background-color: #3d3df8;
+    color: whitesmoke; }
+  form .select {
+    margin: auto;
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px; }
+    form .select .select_item {
+      padding: 10px;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 4px;
+      background-color: lightgray;
+      color: black;
+      transition: background 0.1s; }
+    form .select .select_item_selected {
+      background-color: #ff6201;
+      color: whitesmoke; }
+
+span {
+  color: #00ddff; }
+
+#issues-list {
+  background-color: #212c42;
+  border-radius: 8px; }
+  #issues-list li {
+    list-style: none;
+    margin: 5px; }
+  #issues-list h2 {
+    margin: 10px;
+    padding: 10px; }
+  #issues-list .issue-item {
+    margin: 20px;
+    background-color: #192233;
+    padding: 10px;
+    border-radius: 5px; }
+  #issues-list .labels {
+    display: flex;
+    justify-content: space-evenly; }
+    #issues-list .labels .label-item {
+      align-items: center;
+      appearance: none;
+      background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+      border: 0;
+      border-radius: 6px;
+      box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+      box-sizing: border-box;
+      display: inline-flex;
+      font-family: "JetBrains Mono",monospace;
+      height: 40px;
+      padding: 10px;
+      justify-content: center;
+      position: relative;
+      text-align: left;
+      font-size: 18px; }
+
+.select_item_selected {
+  background-color: #6bfe6b;
+  color: whitesmoke; }

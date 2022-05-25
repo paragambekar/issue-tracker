@@ -1,0 +1,132 @@
+::placeholder{
+    color : whitesmoke;
+}
+
+#project-container{
+    background-color: rgba(25,34,51,255);
+}
+
+.project-item{
+    span{
+
+    }
+   
+    background-color:  rgba(33,44,66,255);
+    // width: 100%;
+    list-style: none;
+    padding : 15px;
+    margin : 10px auto;
+    border-radius: 10px;
+}
+
+form{
+    
+    .hide{
+        visibility: hidden;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    
+    input[type="text"] {
+       width : 55%;
+       height : 45px; 
+       margin : 10px; 
+       background-color: rgb(61, 61, 248);
+      }
+
+    textarea{
+        width : 55%;
+        height : 100px;
+        margin : 10px;
+        background-color: rgb(61, 61, 248);
+        color:whitesmoke;
+    } 
+    .select{
+        margin : auto;
+        width : 50%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap : 3px; 
+        
+        .select_item{
+            padding : 10px;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 4px;
+            background-color: lightgray;
+            color : black;
+            transition: background 0.1s;
+    
+        }
+    
+        .select_item_selected{
+            background-color: rgb(255, 98, 1);
+            color: whitesmoke;
+            
+        }
+    } 
+
+    
+}
+
+span{
+    color : rgb(0, 221, 255);
+}
+
+
+#issues-list{
+
+    background-color: rgba(33,44,66,255);
+   border-radius: 8px;
+
+    li{
+        list-style: none;
+        margin : 5px;
+    }
+
+    h2{
+        margin : 10px;
+        padding : 10px;
+    }
+    
+
+    .issue-item{
+        margin: 20px;
+        background-color: rgba(25,34,51,255);
+        padding : 10px;
+        border-radius: 5px;;
+    }
+
+    .labels{
+
+        display: flex;
+        justify-content:space-evenly;
+        .label-item{
+            // width : 50px;
+            align-items: center;
+            appearance: none;
+            background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+            border: 0;
+            border-radius: 6px;
+            box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+            box-sizing: border-box;
+            display: inline-flex;
+            font-family: "JetBrains Mono",monospace;
+            height: 40px;
+            padding : 10px;
+            justify-content: center;
+            position: relative;
+            text-align: left;
+            font-size: 18px;
+
+        }
+    }
+
+}
+
+.select_item_selected{
+    background-color: rgb(107, 254, 107);
+    color: whitesmoke;
+
+}

@@ -18,7 +18,7 @@ function(request, email, password, done){
 
         if (!user || user.password != password){
             // done function first argument is for error and second is authentication is done or not
-            request.flash('error','Invalid Username/Password');
+          
             return done(null, false);
         }
 

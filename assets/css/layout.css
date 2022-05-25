@@ -1,0 +1,9 @@
+body {
+  font-family: 'Roboto Slab', serif;
+  width: 70%;
+  margin: auto;
+  color: whitesmoke;
+  background-color: #192233; }
+  body a {
+    text-decoration: none;
+    color: whitesmoke; }
