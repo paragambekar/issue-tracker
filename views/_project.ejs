@@ -30,13 +30,12 @@
     <select name="labels" class="custom-select" multiple>
         <option value="bug">bug</option>
         <option value="enhancement">enhancement</option>
-        <option value="good issue first">good issue first</option>
+        <option value="good first issue">good first issue</option>
         <option value="help wanted">help wanted</option>
-        <option value="invalid">invalid</option>
         <option value="question">question</option>
         <option value="wont fix">wont fix</option>
     </select>
-    <input type="hidden" value="<%=projects._id%>">
+    <input type="hidden" name="project" value="<%=projects._id%>">
     <input type="submit" value="Add Issue">
 </form>
 
@@ -51,16 +50,24 @@
 
         <input type="checkbox" name="labels" id="bug" value="bug">
         <label for="bug">Bug</label>
-        <input type="checkbox" name="labels" id="invalid" value="invalid">
-        <label for="invalid">Invalid</label>
+
         <input type="checkbox" name="labels" id="question" value="question">
         <label for="question">Question</label>
-        <input type="checkbox" name="labels" id="wont" value="wont">
-        <label for="wont">Won't Fix</label>
+
+        <input type="checkbox" name="labels" id="help wanted" value="help wanted">
+        <label for="help wanted">Help Wanted</label>
+
+        <input type="checkbox" name="labels" id="enhancement" value="enhancement">
+        <label for="enhancement">Enhancement</label>
         
+        <input type="checkbox" name="labels" id="good first issue" value="good first issue">
+        <label for="good first issue">Good first issue</label>
+
+        <input type="checkbox" name="labels" id="wont fix" value="wont fix">
+        <label for="wont fix">Won't fix</label>
     
         <input type="text" name="author" placeholder="Search By Author">
-       <input type="hidden" value="<%=projects._id%>">
+        <input type="hidden" name="id" value="<%=projects._id%>">
         <input type="submit" value="Filter">
     </fieldset>
 

@@ -1,7 +1,7 @@
 
 console.log('inside js');
 class CustomSelect{
-    constructor(originalSelect){
+    constructor(originalSelect){ 
         this.originalSelect = originalSelect;
         this.customSelect = document.createElement('div');
         this.customSelect.classList.add('select');

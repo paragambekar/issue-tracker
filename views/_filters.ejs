@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="/css/project.css">
+<div class="project-item">    
+        <p>
+            <span>Name of Project :</span> <%= project.name %>
+        </p>
+        <p>
+           <span> Description :</span> <%= project.description%>
+        </p>
+        <p>
+            <span>Author :</span> <%= project.author %>
+        </p>
+</div>
+<div id="btns">
+    <div class="show-issues-btn">
+        <a href="/projects/<%=project._id%>">
+        Show All Issues
+        </a>
+    </div>
+    
+    <div class="show-issues-btn report-issues-btn">
+        <a href="/projects/<%=project._id%>">
+            Report Issue
+        </a>
+    </div>
+</div>
+
+
+<div>
+
+    <form action="/projects/filter" method="post">
+
+   <fieldset>
+       
+       <legend>Search By Filters</legend>
+
+       <input type="checkbox" name="labels" id="bug" value="bug">
+       <label for="bug">Bug</label>
+
+       <input type="checkbox" name="labels" id="question" value="question">
+       <label for="question">Question</label>
+
+       <input type="checkbox" name="labels" id="help wanted" value="help wanted">
+       <label for="help wanted">Help Wanted</label>
+
+       <input type="checkbox" name="labels" id="enhancement" value="enhancement">
+       <label for="enhancement">Enhancement</label>
+       
+       <input type="checkbox" name="labels" id="good first issue" value="good first issue">
+       <label for="good first issue">Good first issue</label>
+
+       <input type="checkbox" name="labels" id="wont fix" value="wont fix">
+       <label for="wont fix">Won't fix</label>
+   
+       <input type="text" name="author" placeholder="Search By Author">
+       <input type="hidden" name="id" value="<%=project._id%>">
+       <input type="submit" value="Filter">
+   </fieldset>
+
+</form>
+
+</div>
+
+<div id="issues-list">
+
+    <h2>Issues</h2>
+      
+        <% for(issue of issueArray){ %> 
+           
+     
+                <div class="issue-item">
+                    <p><span>Title :</span> <%= issue.title %> </p>
+                    <p><span>Description :</span> <%= issue.description %> </p>
+                    <p><span>Author :</span><%= issue.author %> </p>
+
+
+                    <% if(issue.labels.length > 0){ %>
+
+                        <div class="labels">
+                        <% for(label of issue.labels){ %>
+                            
+                            <div class="label-item">
+                                <%= label %> 
+                            </div>
+                            
+                            <% } %>
+                        </div>
+                    <% } %>
+
+                </div>
+                
+                
+                
+
+          
+
+        <% } %>
+    
+
+
+
+</div>
+
+</div>
+
+

@@ -86,3 +86,28 @@ span {
 .select_item_selected {
   background-color: #6bfe6b;
   color: whitesmoke; }
+
+#btns {
+  display: flex;
+  justify-content: space-around; }
+
+.show-issues-btn {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 12px 14px;
+  text-align: center;
+  margin: 20px;
+  width: 150px; }
+
+.report-issues-btn {
+  background-color: #0b9174;
+  border: 0;
+  width: 150px; }
