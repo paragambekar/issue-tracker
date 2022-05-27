@@ -1,9 +1,10 @@
 
 #home-container{
-    margin: 0;
+    margin: auto;
     background-color: rgba(33,44,66,255);
     padding: 15px;
-    border-radius: 10px;;
+    border-radius: 10px;
+    width : 70%;
 
     h1{
         text-align: center;
@@ -28,5 +29,6 @@
         padding: 10px 24px;
         margin: auto;
     }
+
 
 }

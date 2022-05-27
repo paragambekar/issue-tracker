@@ -1,0 +1,8 @@
+.new-project {
+  border: 2px solid black;
+  width: 80%;
+  margin: auto; }
+  .new-project form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }

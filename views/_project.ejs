@@ -3,8 +3,6 @@
 
     <div id="project-container">
     <div class="project-item">
-    <li>
-        
         <p>
             <span>Name of Project :</span> <%= projects.name %>
         </p>
@@ -14,61 +12,90 @@
         <p>
             <span>Author :</span> <%= projects.author %>
         </p>
-        
-    </li>
 </div>
 
 </a>
 
-<a href="/projects/issue">Report Issue</a>
+<!-- <a href="/projects/issue">Report Issue</a> -->
+
+<!-- <fieldset> -->
+    <div id="report-div">
+
+        <div class="heading">
+            Report Issue
+        </div>
+        <form action="/projects/<%=projects._id%>" method="post">
+            <input type="text" name="title" placeholder="Title" required>
+            <textarea name="description" placeholder="Describe Issue"></textarea>
+            <input type="text" name="author" placeholder="Author">
+            <select name="labels" class="custom-select" multiple>
+                <option value="bug">bug</option>
+                <option value="enhancement">enhancement</option>
+                <option value="good first issue">good first issue</option>
+                <option value="help wanted">help wanted</option>
+                <option value="question">question</option>
+                <option value="wont fix">wont fix</option>
+            </select>
+            <input type="hidden" name="project" value="<%=projects._id%>">
+            <input type="submit" value="Add Issue" class="show-issues-btn">
+        </form>
+
+    </div>
+
+   
+
+<!-- </fieldset> -->
 
 
-<form action="/projects/<%=projects._id%>" method="post">
-    <input type="text" name="title" placeholder="Title" required>
-    <textarea name="description" placeholder="Describe Issue"></textarea>
-    <input type="text" name="author" placeholder="Author">
-    <select name="labels" class="custom-select" multiple>
-        <option value="bug">bug</option>
-        <option value="enhancement">enhancement</option>
-        <option value="good first issue">good first issue</option>
-        <option value="help wanted">help wanted</option>
-        <option value="question">question</option>
-        <option value="wont fix">wont fix</option>
-    </select>
-    <input type="hidden" name="project" value="<%=projects._id%>">
-    <input type="submit" value="Add Issue">
-</form>
 
 
-<div>
+
+<div id="filters">
 
      <form action="/projects/filter" method="post">
-
+    
+    
     <fieldset>
         
-        <legend>Search By Filters</legend>
-
-        <input type="checkbox" name="labels" id="bug" value="bug">
-        <label for="bug">Bug</label>
-
-        <input type="checkbox" name="labels" id="question" value="question">
-        <label for="question">Question</label>
-
-        <input type="checkbox" name="labels" id="help wanted" value="help wanted">
-        <label for="help wanted">Help Wanted</label>
-
-        <input type="checkbox" name="labels" id="enhancement" value="enhancement">
-        <label for="enhancement">Enhancement</label>
+        <legend>Search Issues By Filters</legend>
+        <div id="labels">
+        <div>
+            <input type="checkbox" name="labels" id="bug" value="bug">
+            <label for="bug">Bug</label>
+        </div>
         
-        <input type="checkbox" name="labels" id="good first issue" value="good first issue">
-        <label for="good first issue">Good first issue</label>
-
-        <input type="checkbox" name="labels" id="wont fix" value="wont fix">
-        <label for="wont fix">Won't fix</label>
-    
+        <div>
+            <input type="checkbox" name="labels" id="question" value="question">
+            <label for="question">Question</label>
+        </div>
+        
+        <div>
+            <input type="checkbox" name="labels" id="help wanted" value="help wanted">
+            <label for="help wanted">Help Wanted</label>
+        </div>
+        
+        <div>
+            <input type="checkbox" name="labels" id="enhancement" value="enhancement">
+            <label for="enhancement">Enhancement</label> 
+        </div>
+        
+        <div>
+            <input type="checkbox" name="labels" id="good first issue" value="good first issue">
+            <label for="good first issue">Good first issue</label>
+        </div>
+        
+        <div>
+            <input type="checkbox" name="labels" id="wont fix" value="wont fix">
+            <label for="wont fix">Won't fix</label>
+        </div>
+       
+        
+        </div>
         <input type="text" name="author" placeholder="Search By Author">
+        <input type="text" name="title" placeholder="Search by Title / Description">
         <input type="hidden" name="id" value="<%=projects._id%>">
         <input type="submit" value="Filter">
+
     </fieldset>
 
 </form>

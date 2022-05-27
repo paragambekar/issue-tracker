@@ -9,23 +9,15 @@
         <h1>Projects</h1>
         <div id="project-button">
             <% if(locals.user){ %>
-                
-                <!-- <button href="/projects">Create New Project</button> -->
-              
-                <a href="/projects">Create New Project</a>
-    
-
+                <a href="/projects">Create Project</a>
             </form>
             <% } %>
-
         </div>
 
         <div id="projects-list-container">
-            <ul>
                 <% for(project of projects){ %> 
                 <%- include('project'); -%> 
                 <% } %>
-              </ul>
         </div>
         
 

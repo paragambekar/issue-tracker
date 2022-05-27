@@ -87,13 +87,8 @@ module.exports.search= async function(request, response){
     console.log("Project**************", project);
 
     let product = await Issue.find({project : request.body.id}).populate();
-    let count = 0;
-    // for(const i in product){
-    //     console.log(`Product ${++count}`, i);
-    // }
 
     let issueList = [];
-    let labelList = [];
     for(let i = 0; i < product.length; i++){
         console.log(`Product ${i} `,product[i]);
         // filter by author 
@@ -127,15 +122,20 @@ module.exports.search= async function(request, response){
                     }
 
                 }
-
-            // }
-
-
         }
 
-        // console.log('labels List****', labelList);
-
-    
+        if(request.body.title){
+            const reqTitle = request.body.title;
+            const regEx = new RegExp(`${reqTitle}`,'gi');
+            console.log('RegEx************',regEx);
+            if(product[i].title.match(regEx) || product[i].description.match(regEx)){
+                console.log('Title Matched**********');
+                if(!issueList.includes(product[i]._id)){
+                    issueList.push(product[i]._id); 
+                }
+            }
+        }
+        
 
     }
 
