@@ -14,6 +14,8 @@ module.exports.create = async function(request,response){
             author : request.body.author,
         });
 
+        
+
         return response.redirect('/');
 
     }catch(error){
@@ -62,6 +64,16 @@ module.exports.createIssue = async  function(request,response){
                 author: request.body.author,
                 project : request.body.project,
             });
+
+            if(request.xhr){
+                return response.status(200).json({
+                    data : {
+                        project : project,
+                        issue : issue, 
+                    },
+                    message : "Post created by ajax",
+                });
+            }
             // console.log("Issue**************", issue);
             project.issues.push(issue);
             project.save();
@@ -84,13 +96,13 @@ module.exports.search= async function(request, response){
 
     console.log('Request Body', request.body);
     let project = await Project.findById(request.body.id).populate();
-    console.log("Project**************", project);
+    // console.log("Project**************", project);
 
     let product = await Issue.find({project : request.body.id}).populate();
 
     let issueList = [];
     for(let i = 0; i < product.length; i++){
-        console.log(`Product ${i} `,product[i]);
+        // console.log(`Product ${i} `,product[i]);
         // filter by author 
         if(request.body.author != ''){
             if(product[i].author === request.body.author){
@@ -127,9 +139,9 @@ module.exports.search= async function(request, response){
         if(request.body.title){
             const reqTitle = request.body.title;
             const regEx = new RegExp(`${reqTitle}`,'gi');
-            console.log('RegEx************',regEx);
+            // console.log('RegEx************',regEx);
             if(product[i].title.match(regEx) || product[i].description.match(regEx)){
-                console.log('Title Matched**********');
+                // console.log('Title Matched**********');
                 if(!issueList.includes(product[i]._id)){
                     issueList.push(product[i]._id); 
                 }
@@ -141,14 +153,14 @@ module.exports.search= async function(request, response){
 
     let issueArray = [];
     for(let i of issueList){
-        console.log('Issue to populate',i);
+        // console.log('Issue to populate',i);
         let iss = await Issue.findById(i).populate();
-        console.log('issssssssssss', iss);
+        // console.log('issssssssssss', iss);
         issueArray.push(iss);
     }
 
     console.log('Issue List',issueList);
-    console.log('issueArray*******-**-*-',issueArray);
+    // console.log('issueArray*******-**-*-',issueArray);
     return response.render('_filters',{
         project : project,
         issueArray : issueArray,

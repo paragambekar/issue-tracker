@@ -2,10 +2,11 @@
 <div class="new-project">
 <form action="/projects/create" method="post">
 
-    <input type="text" name="name" placeholder="Name of Project" required>
+    <input type="text" id="new-project-form" name="name" placeholder="Name of Project" required>
     <textarea name="description" cols="30" rows="3" placeholder="Description"required></textarea>
     <input type="text" name="author" placeholder="Author">
     <input type="submit" value="Add New Project" class="show-issues-btn">
 
 </form>
 </div>
+<script src="/js/project.js"></script>

@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="/css/project.css">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/project.css">
+</head>
+
+
 <a href="/projects/<%=projects._id%>">
 
     <div id="project-container">
@@ -24,7 +29,7 @@
         <div class="heading">
             Report Issue
         </div>
-        <form action="/projects/<%=projects._id%>" method="post">
+        <form action="/projects/<%=projects._id%>" id="new-issue-form" method="post">
             <input type="text" name="title" placeholder="Title" required>
             <textarea name="description" placeholder="Describe Issue"></textarea>
             <input type="text" name="author" placeholder="Author">
@@ -112,7 +117,7 @@
         <% for(issue of projects.issues){ %> 
            
      
-                <div class="issue-item">
+                <div class="issue-item" id="issue-<%= issue._id%>">
                     <p><span>Title :</span> <%= issue.title %> </p>
                     <p><span>Description :</span> <%= issue.description %> </p>
                     <p><span>Author :</span><%= issue.author %> </p>
@@ -147,5 +152,6 @@
 </div>
 
 <script src="/js/labels.js"></script>
+<script src="/js/project.js"></script>
 
 
