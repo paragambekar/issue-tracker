@@ -54,7 +54,9 @@ module.exports.createIssue = async  function(request,response){
     
     try{
  
-        let project = await Project.findById(request.params.projectId);
+        let project = await Project.findById(request.params.projectId).populate({
+            path : 'issues',
+        });
         if(project){
 
             let issue =await Issue.create({
@@ -63,7 +65,11 @@ module.exports.createIssue = async  function(request,response){
                 labels: request.body.labels,
                 author: request.body.author,
                 project : request.body.project,
-            });
+            }); 
+
+            console.log("Issue**************", issue);
+            project.issues.push(issue);
+            project.save();
 
             if(request.xhr){
                 return response.status(200).json({
@@ -71,15 +77,15 @@ module.exports.createIssue = async  function(request,response){
                         project : project,
                         issue : issue, 
                     },
-                    message : "Post created by ajax",
+                    message : "Issue created by ajax",
                 });
             }
-            // console.log("Issue**************", issue);
-            project.issues.push(issue);
-            project.save();
+            
          
             // console.log('Project*********', project);
-            return response.redirect('back');
+            return response.render('_project',{
+                projects : project,
+            });
     
         }
 
@@ -158,8 +164,20 @@ module.exports.search= async function(request, response){
         // console.log('issssssssssss', iss);
         issueArray.push(iss);
     }
+    // console.log('Issue issueArray************',issueArray);
+    if(request.xhr){
+        return response.status(200).json({
+            data : {
+                project : project,
+                issueArray : issueArray, 
+                issueList : issueList,
+            },
+            message : "Issue created by ajax",
+        });
+    }
+ 
 
-    console.log('Issue List',issueList);
+   
     // console.log('issueArray*******-**-*-',issueArray);
     return response.render('_filters',{
         project : project,

@@ -46,6 +46,8 @@
 
         let newIssueDom = function(issue){
 
+            console.log('issueDom',issue);
+
             for(let i = 0;i < issue.labels.length; i++){
                 console.log(i);
             }
@@ -62,7 +64,7 @@
                 $(labelDiv).prepend(singleLabel);
             }
 
-            return $(`<div class="issue-item" id="issue-${issue._id}">
+            return $(`<div class="issue-item" id="${issue._id}">
             <p><span>Title :</span> ${issue.title}</p>
             <p><span>Description :</span>${issue.description} </p>
             <p><span>Author :</span>${issue.author} </p>               
@@ -70,5 +72,60 @@
         </div>`).append(labelDiv);
         }
 
-        createProject();   
+        createProject();
+        
+        let filterForm = $('#filter-form');
+        filterForm.submit(function(e){
+
+            e.preventDefault();
+            console.log('prevent default');
+
+            $.ajax({
+                type : 'post',
+                data : filterForm.serialize(),
+                url : '/projects/filter',
+                success : function(data){
+                    console.log(data);
+                    // in data we have passed project and issueArray
+                    // for(let i = 0; i < data.data.project.issues.length; i++){
+                    //     let issDiv = $('#issues-list .issue-item');
+                        
+                    // }
+                    
+                    // for(let issue of data.data.issueArray){
+                    //     if(!data.data.project.issues.includes(issue)){
+                    //         let hideDiv = $('#issue-list .issue-item[id=issue]');
+                    //         hideDiv.hide();
+                            
+                    //     }
+                    // }
+
+                    console.log('data.data.project.issues',data.data.project.issues)
+                    console.log('data.data.issueList',data.data.issueList);
+
+                    // if(!data.data.issueList){
+                    //     for(let issue in data.data.project.issues){
+                    //         $('#issues-list').find('.issue-item').css("background-color", "yellow");
+                    //     }
+                    // }
+
+                    for(let issue = 0; issue < data.data.project.issues.length; issue++){
+
+                        
+                        let issueId = data.data.project.issues[issue];
+                        console.log('issue', issue);
+                        console.log('issueId',issueId);
+                        // ('#issues-list .issue-item')
+                        if(data.data.issueList.includes(issueId)){
+                            let hideDiv = $("#"+ issueId);
+                            hideDiv.css("background-color", "yellow");
+                        }else{
+                            let hideDiv = $("#"+ issueId);
+                            hideDiv.css("background-color", "pink");
+                        }
+                    }
+
+                } 
+            });
+        }) ;
     }

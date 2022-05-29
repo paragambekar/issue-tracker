@@ -57,7 +57,7 @@
 
 <div id="filters">
 
-     <form action="/projects/filter" method="post">
+     <form action="/projects/filter" id="filter-form" method="post">
     
     
     <fieldset>
@@ -117,7 +117,7 @@
         <% for(issue of projects.issues){ %> 
            
      
-                <div class="issue-item" id="issue-<%= issue._id%>">
+                <div class="issue-item" id="<%= issue._id%>">
                     <p><span>Title :</span> <%= issue.title %> </p>
                     <p><span>Description :</span> <%= issue.description %> </p>
                     <p><span>Author :</span><%= issue.author %> </p>
