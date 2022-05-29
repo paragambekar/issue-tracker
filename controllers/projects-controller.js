@@ -221,10 +221,9 @@ module.exports.search= async function(request, response){
     console.log('PopopopoTitleDes------->',popTitleDes);
     console.log('TitleDes------->',titleDes);
 
-    if(!request.body.labels){
-        if(!request.body.author){
-            if(!request.body.title){
-                console.log('NOthing insdie request');
+
+    if((!request.body.labels) && (!request.body.author) && (!request.body.title)){
+        console.log('NOthing insdie request');
                 for(issue of product){
                     titleDes.push(issue._id);
                 }
@@ -233,15 +232,7 @@ module.exports.search= async function(request, response){
                     let iss = await Issue.findById(issue).populate();
                     popTitleDes.push(iss);
                 }
-            }
-        }
     }
-    
-    // if(titleDes.length == 0){
-    //     for(issue of product){
-    //         issueList.push(issue._id);
-    //     }
-    // }
 
     let issueArray = [];
     for(let i of issueList){
