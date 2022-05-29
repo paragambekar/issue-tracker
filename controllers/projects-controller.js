@@ -105,7 +105,10 @@ module.exports.search= async function(request, response){
     // console.log("Project**************", project);
 
     let product = await Issue.find({project : request.body.id}).populate();
+    // let labelArray = [];
 
+    console.log('request.body.labels++++',request.body.labels);
+    
     let issueList = [];
     for(let i = 0; i < product.length; i++){
         // console.log(`Product ${i} `,product[i]);
@@ -118,27 +121,29 @@ module.exports.search= async function(request, response){
 
         if(request.body.labels){
             let labelArray = [];
-            labelArray.push(request.body.labels);
-            console.log('Labels Arrays',labelArray);
+            console.log(typeof(request.body.labels));
+            if(typeof(request.body.labels) == 'string'){
+                console.log('Labes are string type here**********');
+                let label = request.body.labels;
+                labelArray.push(label);
+            }else{
+                for(let label of request.body.labels){
+                    labelArray.push(label);
+                }
+            }
+
+            console.log('Labels Arrays*******',labelArray);
 
             // for(let i = 0; i <product.length; i++){
                 let currLabelsArray = product[i].labels;
                 console.log(`Product ${i} Label Array`,currLabelsArray);
 
-                if(labelArray.length == 1){
-                    console.log('labelArray[0[', labelArray[0]);
-                }
-                for(let oneLabel of labelArray){
-                    // console.log('labelArray[0]',labelArray[0]);
-                    // console.log('single label', oneLabel);
-                    if(currLabelsArray.includes(oneLabel)){
-                        console.log('Includes');
-                        if(!issueList.includes(product[i]._id)){
-                            issueList.push(product[i]._id); 
-                        }
-                        
-                    }
 
+                let result = labelArray.every(label => currLabelsArray.includes(label));
+                if(result){
+                    if(!issueList.includes(product[i]._id)){
+                        issueList.push(product[i]._id); 
+                    }
                 }
         }
 
@@ -157,6 +162,16 @@ module.exports.search= async function(request, response){
 
     }
 
+    if(issueList.length == 0){
+
+        console.log('product',product);
+
+        for(issue of product){
+            issueList.push(issue._id);
+        }
+
+    }
+
     let issueArray = [];
     for(let i of issueList){
         // console.log('Issue to populate',i);
@@ -164,7 +179,11 @@ module.exports.search= async function(request, response){
         // console.log('issssssssssss', iss);
         issueArray.push(iss);
     }
-    // console.log('Issue issueArray************',issueArray);
+
+    
+
+
+    console.log('Issue issueArray************',issueArray);
     if(request.xhr){
         return response.status(200).json({
             data : {

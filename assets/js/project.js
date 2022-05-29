@@ -111,17 +111,19 @@
 
                     for(let issue = 0; issue < data.data.project.issues.length; issue++){
 
-                        
+
                         let issueId = data.data.project.issues[issue];
                         console.log('issue', issue);
                         console.log('issueId',issueId);
                         // ('#issues-list .issue-item')
                         if(data.data.issueList.includes(issueId)){
                             let hideDiv = $("#"+ issueId);
-                            hideDiv.css("background-color", "yellow");
+                            // hideDiv.css("background-color", "yellow");
+                            hideDiv.show();
                         }else{
                             let hideDiv = $("#"+ issueId);
-                            hideDiv.css("background-color", "pink");
+                            // hideDiv.css("background-color", "pink");
+                            hideDiv.hide();
                         }
                     }
 
