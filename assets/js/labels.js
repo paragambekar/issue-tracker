@@ -1,5 +1,4 @@
 
-console.log('inside js');
 class CustomSelect{
     constructor(originalSelect){ 
         this.originalSelect = originalSelect;

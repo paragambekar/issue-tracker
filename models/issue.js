@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Scehema for Issue 
 const issueSchema = new mongoose.Schema({
 
     title : {
@@ -27,6 +28,7 @@ const issueSchema = new mongoose.Schema({
     timestamps : true
 });
  
+
 const Issue = mongoose.model('Issue', issueSchema);
 
 module.exports = Issue;

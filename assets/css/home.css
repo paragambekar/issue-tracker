@@ -22,3 +22,6 @@
     width: 25%;
     padding: 10px 24px;
     margin: auto; }
+  #home-container .note-text {
+    color: #06c8d3;
+    text-align: center; }

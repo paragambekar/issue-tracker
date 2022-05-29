@@ -10,9 +10,13 @@
         <div id="project-button">
             <% if(locals.user){ %>
                 <a href="/projects">Create Project</a>
-            </form>
+            
             <% } %>
         </div>
+        <% if(!locals.user){ %>
+           <p class="note-text">Sign In /Sign Up To Create Project</p>
+        
+        <% } %>
 
         <div id="projects-list-container">
                 <% for(project of projects){ %> 
