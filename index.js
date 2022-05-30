@@ -46,7 +46,7 @@ app.use(session({
         maxAge: (1000 * 60 * 100)
     },
     store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost/issue_tracker_development',
+        mongoUrl: process.env.MONGODB_URI ||  'mongodb://localhost/issue_tracker_development',
         autoRemove : 'disabled',
     },function(error){
         console.log(error || 'Connect MongoDB setup ok');
