@@ -27,6 +27,7 @@ npm run start
 ## Features
 
 ● Users can create a project and add issues associated with the project.
+
 ● Issues can be filtered by the labels, title & description and by author
 
 ## Author
